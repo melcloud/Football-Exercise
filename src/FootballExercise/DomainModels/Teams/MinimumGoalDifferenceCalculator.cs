@@ -36,34 +36,7 @@
                 return teams.Single();
             }
 
-            Team winnerTeam = null;
-            int? currentDifference = null;
-
-            foreach (var team in teams)
-            {
-                var difference = team.CalculateGoalDifference();
-
-                if (difference == 0)
-                {
-                    return team;
-                }
-
-                if (currentDifference.HasValue)
-                {
-                    if (difference < currentDifference.Value)
-                    {
-                        winnerTeam = team;
-                        currentDifference = difference;
-                    }
-                }
-                else
-                {
-                    winnerTeam = team;
-                    currentDifference = difference;
-                }
-            }
-
-            return winnerTeam;
+            return teams.OrderBy(team => team.CalculateGoalDifference()).First();
         }
     }
 }
