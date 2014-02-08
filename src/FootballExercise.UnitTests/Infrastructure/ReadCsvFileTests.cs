@@ -39,7 +39,7 @@
             const string FileName = "nonExistingFile.csv";
 
             var readInvalidCsvFile = new ReadCsvFile(FileName);
-            var exception = Record.Exception(() => readInvalidCsvFile.GetAllLines());
+            var exception = Record.Exception(() => readInvalidCsvFile.GetAllLines().Count());
 
             Assert.IsType<FileNotFoundException>(exception);
             Assert.Equal(FileName, ((FileNotFoundException)exception).FileName);

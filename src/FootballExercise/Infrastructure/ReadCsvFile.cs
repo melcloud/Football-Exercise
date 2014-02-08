@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
 
     /// <summary>
     /// The read CSV files.
@@ -45,9 +44,25 @@
                 throw new FileNotFoundException("No file found.", this.filePath);
             }
 
-            var lines = File.ReadAllLines(this.filePath);
+            var firstLine = true;
 
-            return lines.Skip(1);
+            using (var fileStream = File.Open(this.filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                using (var streamReader = new StreamReader(fileStream, true))
+                {
+                    while (!streamReader.EndOfStream)
+                    {
+                        if (firstLine)
+                        {
+                            firstLine = false;
+                            streamReader.ReadLine();
+                            continue;
+                        }
+
+                        yield return streamReader.ReadLine();
+                    }
+                }
+            }
         }
 
         /// <summary>
