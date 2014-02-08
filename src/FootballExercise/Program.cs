@@ -30,9 +30,7 @@
 
             var filePath = args != null ? args[0] : string.Empty;
 
-            var readFile = new ReadCsvFile();
-
-            var teamRepository = new SimpleCsvTeamRepository(readFile);
+            var teamRepository = new SimpleCsvTeamRepository(str => new ReadCsvFile(str));
 
             var commandHandler = new CalculateMinimumDifferenceOfGoalCommandHandler(teamRepository);
 

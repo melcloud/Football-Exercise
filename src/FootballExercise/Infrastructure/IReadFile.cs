@@ -10,12 +10,9 @@
         /// <summary>
         /// Get all lines of the file. 
         /// </summary>
-        /// <param name="filePath">
-        /// The file path.
-        /// </param>
         /// <returns>
         /// All lines in the file or empty collection.
         /// </returns>
-        IEnumerable<string> GetAllLines(string filePath);
+        IEnumerable<string> GetAllLines();
     }
 }

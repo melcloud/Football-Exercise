@@ -17,9 +17,7 @@
         [Fact]
         public void TeamAstonVillaShouldHaveTheMinimumDifferenceOfGoal()
         {
-            var readFile = new ReadCsvFile();
-
-            var teamRepository = new SimpleCsvTeamRepository(readFile);
+            var teamRepository = new SimpleCsvTeamRepository(str => new ReadCsvFile(str));
 
             var commandHandler = new CalculateMinimumDifferenceOfGoalCommandHandler(teamRepository);
 
@@ -32,6 +30,5 @@
             Assert.Equal("Aston_Villa", team.Name);
             Assert.Equal(1, team.CalculateGoalDifference());
         }
-
     }
 }

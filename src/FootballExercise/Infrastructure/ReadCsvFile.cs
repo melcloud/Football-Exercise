@@ -11,15 +11,17 @@
     public class ReadCsvFile : IReadFile
     {
         /// <summary>
-        /// Get all lines in a file.
+        /// The file path.
+        /// </summary>
+        private readonly string filePath;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReadCsvFile"/> class.
         /// </summary>
         /// <param name="filePath">
         /// The file path.
         /// </param>
-        /// <returns>
-        /// The lines in a file.
-        /// </returns>
-        public IEnumerable<string> GetAllLines(string filePath)
+        public ReadCsvFile(string filePath)
         {
             // TODO: use guard library
             if (string.IsNullOrWhiteSpace(filePath))
@@ -27,12 +29,23 @@
                 throw new ArgumentException("File path must be provided.", filePath);
             }
 
-            if (!this.FileExist(filePath))
+            this.filePath = filePath;
+        }
+
+        /// <summary>
+        /// Get all lines in a file.
+        /// </summary>
+        /// <returns>
+        /// The lines in a file.
+        /// </returns>
+        public IEnumerable<string> GetAllLines()
+        {
+            if (!this.FileExist())
             {
-                throw new InvalidOperationException("No file found.");
+                throw new FileNotFoundException("No file found.", this.filePath);
             }
 
-            var lines = File.ReadAllLines(filePath);
+            var lines = File.ReadAllLines(this.filePath);
 
             return lines.Skip(1);
         }
@@ -40,15 +53,12 @@
         /// <summary>
         /// The file exist.
         /// </summary>
-        /// <param name="filePath">
-        /// The file path.
-        /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        protected virtual bool FileExist(string filePath)
+        protected virtual bool FileExist()
         {
-            return File.Exists(filePath);
+            return File.Exists(this.filePath);
         }
     }
 }

@@ -21,9 +21,9 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines(Arg.Any<string>()).ReturnsForAnyArgs(new[] { "Team, P, W, L, D, 1, -, 2, Pts" });
+            fileReader.GetAllLines().ReturnsForAnyArgs(new[] { "Team, P, W, L, D, 1, -, 2, Pts" });
 
-            var teamRepository = new SimpleCsvTeamRepository(fileReader);
+            var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
             var teams = teamRepository.GetAll(Arg.Any<string>());
 
@@ -41,10 +41,10 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines(Arg.Any<string>())
+            fileReader.GetAllLines()
                 .ReturnsForAnyArgs(new[] { "1. Team, P, W, L, D, 1, -, 2, Pts", "Team, P, W, L, D, 1, -, A, Pts" });
 
-            var teamRepository = new SimpleCsvTeamRepository(fileReader);
+            var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
             var teams = teamRepository.GetAll(Arg.Any<string>());
 
@@ -61,10 +61,10 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines(Arg.Any<string>())
+            fileReader.GetAllLines()
                 .ReturnsForAnyArgs(new[] { "Team, P, W, L, D, 1, -, 2, Pts", "Team2, L, D, 2, -, 2, Pts" });
 
-            var teamRepository = new SimpleCsvTeamRepository(fileReader);
+            var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
             var teams = teamRepository.GetAll(Arg.Any<string>());
 
@@ -82,10 +82,10 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines(Arg.Any<string>())
+            fileReader.GetAllLines()
                 .ReturnsForAnyArgs(new[] { "Team, P, W, L, D, 1, -, 2, Pts", "Team, P, W, L, D, F, -, 2, Pts" });
 
-            var teamRepository = new SimpleCsvTeamRepository(fileReader);
+            var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
             var teams = teamRepository.GetAll(Arg.Any<string>());
 
@@ -103,10 +103,10 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines(Arg.Any<string>())
+            fileReader.GetAllLines()
                 .ReturnsForAnyArgs(new[] { "Team, P, W, L, D, 1, -, 2, Pts", "Team, P, W, L, D, 1, -, A, Pts" });
 
-            var teamRepository = new SimpleCsvTeamRepository(fileReader);
+            var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
             var teams = teamRepository.GetAll(Arg.Any<string>());
 

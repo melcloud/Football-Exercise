@@ -21,23 +21,23 @@
         /// <summary>
         /// The read file.
         /// </summary>
-        private readonly IReadFile readFile;
+        private readonly Func<string, IReadFile> readFileFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleCsvTeamRepository"/> class.
         /// </summary>
-        /// <param name="readFile">
-        /// The read file.
+        /// <param name="readFileFactory">
+        /// The read file factory.
         /// </param>
-        public SimpleCsvTeamRepository(IReadFile readFile)
+        public SimpleCsvTeamRepository(Func<string, IReadFile> readFileFactory)
         {
             // TODO: Change to use Guard library
-            if (readFile == null)
+            if (readFileFactory == null)
             {
-                throw new ArgumentNullException("readFile");
+                throw new ArgumentNullException("readFileFactory");
             }
 
-            this.readFile = readFile;
+            this.readFileFactory = readFileFactory;
         }
 
         /// <summary>
@@ -57,7 +57,9 @@
         /// </returns>
         public IImmutableList<Team> GetAll(string filePath)
         {
-            var teamDataLines = this.readFile.GetAllLines(filePath).Select(
+            var readFile = this.readFileFactory(filePath);
+
+            var teamDataLines = readFile.GetAllLines().Select(
                 (v, index) =>
                     {
                         var teamData = v.Split(Delimiter);
