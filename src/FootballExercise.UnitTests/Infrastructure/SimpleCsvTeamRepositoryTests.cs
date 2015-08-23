@@ -21,11 +21,11 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines().ReturnsForAnyArgs(new[] { "Team, P, W, L, D, 1, -, 2, Pts" });
+            fileReader.GetAllLines().Returns(new[] { "Team, P, W, L, D, 1, -, 2, Pts" });
 
             var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
-            var teams = teamRepository.GetAll(Arg.Any<string>());
+            var teams = teamRepository.GetAll("test");
 
             Assert.NotNull(teams);
             Assert.Equal(1, teams.Count);
@@ -41,12 +41,11 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines()
-                .ReturnsForAnyArgs(new[] { "1. Team, P, W, L, D, 1, -, 2, Pts", "Team, P, W, L, D, 1, -, A, Pts" });
+            fileReader.GetAllLines().Returns(new[] { "1. Team, P, W, L, D, 1, -, 2, Pts", "Team, P, W, L, D, 1, -, A, Pts" });
 
             var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
-            var teams = teamRepository.GetAll(Arg.Any<string>());
+            var teams = teamRepository.GetAll("test");
 
             Assert.NotNull(teams);
             Assert.Equal(1, teams.Count);
@@ -61,12 +60,11 @@
         {
             var fileReader = Substitute.For<IReadFile>();
 
-            fileReader.GetAllLines()
-                .ReturnsForAnyArgs(new[] { "Team, P, W, L, D, 1, -, 2, Pts", "Team2, L, D, 2, -, 2, Pts" });
+            fileReader.GetAllLines().Returns(new[] { "Team, P, W, L, D, 1, -, 2, Pts", "Team2, L, D, 2, -, 2, Pts" });
 
             var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
-            var teams = teamRepository.GetAll(Arg.Any<string>());
+            var teams = teamRepository.GetAll("test");
 
             Assert.NotNull(teams);
             Assert.Equal(1, teams.Count);
@@ -87,7 +85,7 @@
 
             var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
-            var teams = teamRepository.GetAll(Arg.Any<string>());
+            var teams = teamRepository.GetAll("test");
 
             Assert.NotNull(teams);
             Assert.Equal(1, teams.Count);
@@ -108,7 +106,7 @@
 
             var teamRepository = new SimpleCsvTeamRepository(str => fileReader);
 
-            var teams = teamRepository.GetAll(Arg.Any<string>());
+            var teams = teamRepository.GetAll("test");
 
             Assert.NotNull(teams);
             Assert.Equal(1, teams.Count);

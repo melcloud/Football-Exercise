@@ -21,10 +21,7 @@
 
             var commandHandler = new CalculateMinimumDifferenceOfGoalCommandHandler(teamRepository);
 
-            Team team = null;
-
-            Assert.DoesNotThrow(
-                () => team = commandHandler.Handle(new CalculateMinimumDifferenceOfGoal("football.csv")));
+            var team = commandHandler.Handle(new CalculateMinimumDifferenceOfGoal("football.csv"));
 
             Assert.NotNull(team);
             Assert.Equal("Aston_Villa", team.Name);

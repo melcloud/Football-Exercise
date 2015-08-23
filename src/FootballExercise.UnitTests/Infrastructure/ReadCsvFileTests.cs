@@ -1,14 +1,12 @@
 ﻿namespace FootballExercise.UnitTests.Infrastructure
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
 
     using FootballExercise.Infrastructure;
 
     using Xunit;
-    using Xunit.Extensions;
 
     /// <summary>
     /// The read CSV file tests.
@@ -53,9 +51,7 @@
         {
             var readCsvFile = new ReadCsvFile("test.csv");
 
-            IEnumerable<string> lines = null;
-
-            Assert.DoesNotThrow(() => lines = readCsvFile.GetAllLines());
+            var lines = readCsvFile.GetAllLines();
 
             Assert.NotEmpty(lines);
         }
@@ -68,9 +64,7 @@
         {
             var readCsvFile = new ReadCsvFile("test.csv");
 
-            IEnumerable<string> lines = null;
-
-            Assert.DoesNotThrow(() => lines = readCsvFile.GetAllLines());
+            var lines = readCsvFile.GetAllLines();
 
             Assert.Equal(1, lines.Count());
         }
