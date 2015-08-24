@@ -1,0 +1,14 @@
+version: 1.0.0-build{build}
+
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: 1.0.0
+  assembly_file_version: 1.0.0
+  assembly_informational_version: '{version}'
+
+before_build:
+- nuget restore src
+
+build:
+  verbosity: Detailed

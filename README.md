@@ -1,7 +1,5 @@
-<a href="https://scan.coverity.com/projects/melcloud-football-exercise">
-  <img alt="Coverity Scan Build Status"
-       src="https://img.shields.io/coverity/scan/6125.svg"/>
-</a>
+[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/6125.svg)](https://scan.coverity.com/projects/melcloud-football-exercise)
+[![Build status](https://ci.appveyor.com/api/projects/status/8k5322n7ojn959fs/branch/master?svg=true)](https://ci.appveyor.com/project/melcloud/football-exercise/branch/master)
 
 # Introduction #
 The file football.dat contains the results from the English Premier League. The columns ‘F’ and ‘A’ contain the total number of goals scored for and against each team in that season (so Arsenal scored 79 goals against opponents, and had 36 goals scored against them).
