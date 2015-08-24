@@ -1,18 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballExercise", "FootballExercise\FootballExercise.csproj", "{EA78D83A-601E-4EB3-9389-C12180521953}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballExercise.UnitTests", "FootballExercise.UnitTests\FootballExercise.UnitTests.csproj", "{63BD54CC-1D40-446E-9FAA-B9FF5DAFA480}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F92BBE09-3690-4152-8D89-AB7E29980346}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballExercise.IntegrationTests", "FootballExercise.IntegrationTests\FootballExercise.IntegrationTests.csproj", "{BDCA79D7-8826-4FAC-BFE9-A67FE121D825}"
 EndProject
